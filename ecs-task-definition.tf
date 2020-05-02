@@ -1,14 +1,16 @@
 resource "aws_ecs_task_definition" "factorio" {
   family                = "factorio"
   container_definitions = file("task-definitions/factorio.json")
+  requires_compatibilities = ["FARGATE"]
+  network_mode = "awsvpc"
+  cpu = 256
+  memory = 512
 
   volume {
     name      = "factorio-storage"
-    host_path = "/ecs/factorio-storage"
-  }
-
-  placement_constraints {
-    type       = "memberOf"
-    expression = "attribute:ecs.availability-zone in [us-east-2a, us-east-2b]"
+    efs_volume_configuration {
+        file_system_id = aws_efs_file_system.factorio-efs.id
+        root_directory = "/factorio"
+    }
   }
 }

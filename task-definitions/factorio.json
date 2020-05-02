@@ -10,6 +10,12 @@
           "containerPort": 34197,
           "hostPort": 34197
         }
+      ],
+      "mountPoints" : [
+          {
+              "containerPath": "/factorio",
+              "sourceVolume": "factorio-storage"
+          }
       ]
     }
   ]
