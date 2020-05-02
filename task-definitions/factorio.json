@@ -1,0 +1,15 @@
+[
+    {
+      "name": "factorio",
+      "image": "factoriotools/factorio",
+      "cpu": 4,
+      "memory": 512,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 34197,
+          "hostPort": 34197
+        }
+      ]
+    }
+  ]
