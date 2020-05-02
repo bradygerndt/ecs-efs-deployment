@@ -7,8 +7,8 @@ variable "aws_regions" {
 variable "default_tags" {
   type = map(string)
   default = {
-      Terraform = true
-      Project = "factorio-tf"
+    Terraform = true
+    Project   = "factorio-tf"
   }
 }
 
