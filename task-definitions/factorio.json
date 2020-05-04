@@ -5,6 +5,7 @@
       "cpu": 4,
       "memory": 512,
       "essential": true,
+      "networkMode": "awsvpc",
       "portMappings": [
         {
           "containerPort": 34197,
