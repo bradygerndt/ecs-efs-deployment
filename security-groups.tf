@@ -4,10 +4,19 @@ resource "aws_security_group" "allow_factorio" {
   vpc_id      = aws_vpc.bgerndt.id
 
   ingress {
-    protocol    = "6"
-    from_port   = 80
-    to_port     = 8000
+    description = "All from within security group"
+    protocol    = "-1"
+    from_port   = 0
+    to_port     = 0
     cidr_blocks = [aws_vpc.bgerndt.cidr_block]
+  }
+
+   ingress {
+    description = "Factorio from internet"
+    from_port   = 34197
+    to_port     = 34197
+    protocol    = "17"
+    cidr_blocks = ["0.0.0.0/0"]
   }
   
    egress {
