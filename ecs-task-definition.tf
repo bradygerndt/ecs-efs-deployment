@@ -9,7 +9,7 @@ resource "aws_ecs_task_definition" "factorio" {
   volume {
     name      = "factorio-storage"
     efs_volume_configuration {
-        file_system_id = aws_efs_file_system.factorio-efs.arn
+        file_system_id = aws_efs_file_system.factorio-efs.id
         root_directory = "/factorio"
     }
   }
