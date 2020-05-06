@@ -1,7 +1,7 @@
 [
     {
       "name": "factorio",
-      "image": "factoriotools/factorio",
+      "image": "factoriotools/factorio:stable",
       "cpu": 4,
       "memory": 512,
       "essential": true,
