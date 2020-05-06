@@ -1,22 +1,33 @@
 [
-    {
-      "name": "factorio",
-      "image": "factoriotools/factorio:stable",
-      "cpu": 4,
-      "memory": 512,
-      "essential": true,
-      "networkMode": "awsvpc",
-      "portMappings": [
-        {
-          "containerPort": 34197,
-          "hostPort": 34197
-        }
-      ],
-      "mountPoints" : [
-          {
-              "containerPath": "/factorio",
-              "sourceVolume": "factorio-storage"
-          }
-      ]
+  {
+    "name": "factorio",
+    "image": "factoriotools/factorio@sha256:1f46d7e5ca651eea9592f47b117c767f6042fd624a7899f7eb56dafeae756402",
+    "cpu": 4,
+    "memory": 1024,
+    "essential": true,
+    "networkMode": "awsvpc",
+    "portMappings": [
+      {
+        "containerPort": 34197,
+        "hostPort": 34197,
+        "Protocol": "udp"
+      }
+    ],
+    "mountPoints": [
+      {
+        "containerPath": "/factorio",
+        "sourceVolume": "factorio-storage",
+        "ReadOnly": false
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "secretOptions": null,
+      "options": {
+        "awslogs-group": "/ecs/factorio-ecs",
+        "awslogs-region": "us-east-2",
+        "awslogs-stream-prefix": "ecs"
+      }
     }
-  ]
+  }
+]

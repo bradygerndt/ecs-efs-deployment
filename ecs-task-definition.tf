@@ -4,7 +4,8 @@ resource "aws_ecs_task_definition" "factorio" {
   requires_compatibilities = ["FARGATE"]
   network_mode = "awsvpc"
   cpu = 256
-  memory = 512
+  memory = 1024
+  execution_role_arn = "arn:aws:iam::259506434366:role/ecsTaskExecutionRole"
 
   volume {
     name      = "factorio-storage"
