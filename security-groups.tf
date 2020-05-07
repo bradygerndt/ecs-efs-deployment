@@ -22,6 +22,7 @@ resource "aws_security_group" "allow_factorio" {
     description = "Factorio RCON from internet"
     from_port = 27015
     to_port = 27015
+    protocol = "6"
     cidr_blocks = ["0.0.0.0/0"]
   }
   
