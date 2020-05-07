@@ -32,7 +32,7 @@
     "entryPoint": [
       "bash",
       "-c",
-      "echo 'bradygerndt' > factorio/config/server-adminlist.json && /docker-entrypoint.sh"
+      "mkdir factorio/config; echo '[\"bradygerndt\"]' > factorio/config/server-adminlist.json && /docker-entrypoint.sh"
     ]
   }
 ]
