@@ -13,7 +13,7 @@
         "Protocol": "udp"
       },
       {
-        "containerPort": 27105,
+        "containerPort": 27015,
         "hostPort": 27015
       }
     ],
