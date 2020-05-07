@@ -18,13 +18,6 @@ resource "aws_security_group" "allow_factorio" {
     protocol    = "17"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  ingress {
-    description = "Factorio RCON from internet"
-    from_port = 27015
-    to_port = 27015
-    protocol = "6"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
   
    egress {
     from_port   = 0

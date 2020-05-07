@@ -11,10 +11,6 @@
         "containerPort": 34197,
         "hostPort": 34197,
         "Protocol": "udp"
-      },
-      {
-        "containerPort": 27015,
-        "hostPort": 27015
       }
     ],
     "mountPoints": [
@@ -36,7 +32,7 @@
     "entryPoint": [
       "bash",
       "-c",
-      "echo 'testPassword' > factorio/config/rconpw && /docker-entrypoint.sh"
+      "echo 'bradygerndt' > factorio/config/server-adminlist.json && /docker-entrypoint.sh"
     ]
   }
 ]
