@@ -11,6 +11,10 @@
         "containerPort": 34197,
         "hostPort": 34197,
         "Protocol": "udp"
+      },
+      {
+        "containerPort": 27105,
+        "hostPort": 27015
       }
     ],
     "mountPoints": [
@@ -28,6 +32,11 @@
         "awslogs-region": "us-east-2",
         "awslogs-stream-prefix": "ecs"
       }
-    }
+    },
+    "entryPoint": [
+      "bash",
+      "-c",
+      "echo 'testPassword' > factorio/config/rconpw && /docker-entrypoint.sh"
+    ]
   }
 ]
