@@ -1,9 +1,9 @@
 resource "aws_appautoscaling_target" "ecs_target" {
   max_capacity       = 1
   min_capacity       = 0
-  resource_id        = aws_ecs_service.factorio.id
+  resource_id        = "service/${aws_ecs_service.factorio.name}"
   scalable_dimension = "ecs:service:DesiredCount"
-  service_namespace  = "AWS/ECS"
+  service_namespace  = "ecs"
 }
 
 resource "aws_appautoscaling_policy" "ecs_policy" {
