@@ -18,7 +18,6 @@ resource "aws_appautoscaling_policy" "ecs_policy" {
     cooldown                = 60
     metric_aggregation_type = "Average"
     step_adjustment {
-      metric_interval_upper_bound = 1
       scaling_adjustment          = 0
     }
   }
@@ -34,6 +33,7 @@ resource "aws_cloudwatch_metric_alarm" "ecs-low-cpu" {
   statistic           = "Average"
   threshold           = 10
   unit = "Percentage"
+  
 
   alarm_description = "Monitor CPU usage of less than 10% on ecs resource"
   alarm_actions     = [aws_appautoscaling_policy.ecs_policy.arn]
