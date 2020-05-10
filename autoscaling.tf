@@ -14,13 +14,12 @@ resource "aws_appautoscaling_policy" "ecs_policy" {
   service_namespace  = aws_appautoscaling_target.ecs_target.service_namespace
 
   step_scaling_policy_configuration {
-    adjustment_type         = "ChangeInCapacity"
+    adjustment_type         = "ExactCapacity"
     cooldown                = 60
     metric_aggregation_type = "Average"
-
     step_adjustment {
-      metric_interval_upper_bound = 0
-      scaling_adjustment          = -1
+      metric_interval_upper_bound = 1
+      scaling_adjustment          = 0
     }
   }
 }
@@ -34,6 +33,7 @@ resource "aws_cloudwatch_metric_alarm" "ecs-low-cpu" {
   period              = "900"
   statistic           = "Average"
   threshold           = 10
+  unit = "Percentage"
 
   alarm_description = "Monitor CPU usage of less than 10% on ecs resource"
   alarm_actions     = [aws_appautoscaling_policy.ecs_policy.arn]
