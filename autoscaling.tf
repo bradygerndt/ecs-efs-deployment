@@ -18,7 +18,7 @@ resource "aws_appautoscaling_policy" "ecs_policy" {
     cooldown                = 60
     metric_aggregation_type = "Average"
     step_adjustment {
-      metric_interval_lower_bound = -1
+      metric_interval_lower_bound = 0
       scaling_adjustment          = 0
     }
   }
