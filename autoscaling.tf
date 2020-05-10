@@ -33,7 +33,7 @@ resource "aws_cloudwatch_metric_alarm" "ecs-low-cpu" {
   period              = "900"
   statistic           = "Average"
   threshold           = 10
-  unit = "Percentage"
+  unit = "Percent"
   
 
   alarm_description = "Monitor CPU usage of less than 10% on ecs resource"
