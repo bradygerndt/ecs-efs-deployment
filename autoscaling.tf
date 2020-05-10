@@ -18,24 +18,27 @@ resource "aws_appautoscaling_policy" "ecs_policy" {
     cooldown                = 60
     metric_aggregation_type = "Average"
     step_adjustment {
-      metric_interval_lower_bound = 0
+      metric_interval_lower_bound = -1
       scaling_adjustment          = 0
     }
   }
 }
 
-resource "aws_cloudwatch_metric_alarm" "ecs-low-cpu" {
+resource "aws_cloudwatch_metric_alarm" "ECS-LOW-CPU" {
   alarm_name          = "ECS-LOW-CPU-UTILIZATION"
   comparison_operator = "LessThanOrEqualToThreshold"
-  evaluation_periods  = "3"
-  metric_name         = "CPUUtilization"
-  namespace           = "AWS/ECS"
-  period              = "900"
-  statistic           = "Average"
-  threshold           = 10
-  unit = "Percent"
-  
-
+  evaluation_periods  = 3
+  datapoints_to_alarm = 3
+  dimensions = {
+    "ClusterName" : "factorio",
+    "ServiceName" : "factorio"
+  }
+  metric_name = "CPUUtilization"
+  namespace   = "AWS/ECS"
+  period      = "300"
+  statistic   = "Average"
+  threshold   = 10
+  unit        = "Percent"
   alarm_description = "Monitor CPU usage of less than 10% on ecs resource"
   alarm_actions     = [aws_appautoscaling_policy.ecs_policy.arn]
 }
