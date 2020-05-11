@@ -14,7 +14,7 @@ resource "aws_appautoscaling_policy" "ecs_policy" {
   service_namespace  = aws_appautoscaling_target.ecs_target.service_namespace
 
   step_scaling_policy_configuration {
-    adjustment_type         = "ExactCapacity"
+    adjustment_type         = "ChangeInCapacity"
     cooldown                = 600
     metric_aggregation_type = "Average"
     step_adjustment {
