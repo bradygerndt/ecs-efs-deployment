@@ -1,2 +1,2 @@
 # ecs-efs-deployment
-Terraform configuration for ECS deployment backed by EFS
+Terraform configuration for Fargate ECS deployment backed by EFS
