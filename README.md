@@ -1,2 +1,2 @@
-# factorio-tf
-Terraform configuration for factorio in AWS
+# ecs-efs-deployment
+Terraform configuration for ECS deployment backed by EFS
